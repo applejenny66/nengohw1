@@ -69,38 +69,38 @@ with nengo.Simulator(model) as sim:
 
 plt.figure(figsize=(10, 10))
 vocab = model.vocabs[dimensions]
-"""
-plt.subplot(3, 1, 1)
+
+plt.subplot(5, 1, 1)
 plt.plot(sim.trange(), spa.similarity(sim.data[p_color_in], vocab))
 plt.legend(vocab.keys(), fontsize='x-small')
 plt.ylabel("question")
 
-plt.subplot(3, 1, 2)
+plt.subplot(5, 1, 2)
 plt.plot(sim.trange(), spa.similarity(sim.data[p_shape_in], vocab))
 plt.legend(vocab.keys(), fontsize='x-small')
 plt.ylabel("corespond")
 
-plt.subplot(3, 1, 3)
+plt.subplot(5, 1, 3)
 plt.plot(sim.trange(), spa.similarity(sim.data[p_cue], vocab))
 plt.legend(vocab.keys(), fontsize='x-small')
 plt.ylabel("cue")
 
-"""
-plt.subplot(2, 1, 1)
+
+plt.subplot(5, 1, 4)
 for pointer in ['WHEN * JANUARY2016', 'WHO * BNPPARIBAS',  'WHAT * EXCELLENCEPROGRAM', \
     'WHOM * GRADUATES', 'HOWLONG * MONTHS']:
     plt.plot(sim.trange(), vocab.parse(pointer).dot(sim.data[p_conv].T), label=pointer)
 plt.legend(fontsize='x-small')
 plt.ylabel("convolved")
 
-plt.subplot(2, 1, 2)
+plt.subplot(5, 1, 5)
 plt.plot(sim.trange(), spa.similarity(sim.data[p_out], vocab))
 plt.legend(vocab.keys(), fontsize='x-small')
 plt.ylabel("output")
 
 plt.xlabel("time [s]")
 
-plt.savefig('test3.jpg')
+plt.savefig('qa.jpg')
 plt.show()
 
 
